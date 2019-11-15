@@ -31,3 +31,64 @@ Processing by Rails::InfoController#routes as HTML
 Completed 200 OK in 47ms (Views: 33.1ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "books" ("title", "memo", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "some title"], ["memo", "some memo"], ["created_at", "2019-11-15 01:32:53.500868"], ["updated_at", "2019-11-15 01:32:53.500868"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT  "books".* FROM "books" ORDER BY "books"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddAuthorToBooks (20191115014040)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "books" ADD "author" varchar[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191115014040"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT  "books".* FROM "books" ORDER BY "books"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddPictureToBooks (20191115015355)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "books" ADD "picture" varchar[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191115015355"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/books" for ::1 at 2019-11-15 11:24:55 +0900
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BooksController#index as HTML
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 229ms (Views: 212.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/books/new" for ::1 at 2019-11-15 11:25:33 +0900
+Processing by BooksController#new as HTML
+  Rendering books/new.html.erb within layouts/application
+  Rendered books/_form.html.erb (34.0ms)
+  Rendered books/new.html.erb within layouts/application (36.6ms)
+Completed 200 OK in 62ms (Views: 58.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/books" for ::1 at 2019-11-15 11:25:48 +0900
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1oaxu7GBt4pLcgR/QFh+LDqStak4lP1VWJOAikdDYgGrTHGhtYOOoAVoKMhDoTnpiuyzTLqFwFbGPt09XMhYGg==", "book"=>{"title"=>"", "memo"=>"", "author"=>"", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00007f8e8fac8b20 @tempfile=#<Tempfile:/var/folders/tz/qmhxf4h91v110g64x4tg79kh0000gn/T/RackMultipart20191115-90835-4jab8o.png>, @original_filename="シルエットダンス.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"book[picture]\"; filename=\"\xE3\x82\xB7\xE3\x83\xAB\xE3\x82\xA8\xE3\x83\x83\xE3\x83\x88\xE3\x82\xBF\xE3\x82\x99\xE3\x83\xB3\xE3\x82\xB9.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Book"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "books" ("title", "memo", "created_at", "updated_at", "author", "picture") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", ""], ["memo", ""], ["created_at", "2019-11-15 02:25:48.245588"], ["updated_at", "2019-11-15 02:25:48.245588"], ["author", ""], ["picture", "シルエットダンス.png"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/books/2
+Completed 302 Found in 37ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/books/2" for ::1 at 2019-11-15 11:25:48 +0900
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBook Load (0.3ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 50ms (Views: 43.3ms | ActiveRecord: 0.3ms)
+
+
